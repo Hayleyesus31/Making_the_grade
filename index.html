@@ -1,1 +1,40 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Student Data</title>
+</head>
+<body>
+<h1>Student Data</h1>
+<div id="student-data"></div>
+<script>
+let grades = "jim|25, sue|32, mary|34, ann|22, ted|28, frank|15, lisa|19, mike|30, ahn|26, vishaya|27";
+let students = grades.split(", ");
+let lowestScore = 100;
+let highestScore = 0;
+let totalScore = 0;
+let i;
+
+for (i = 0; i < students.length; i++) {
+  let student = students[i].split("|");
+  let name = student[0].charAt(0).toUpperCase() + student[0].slice(1);
+  let score = parseInt(student[1]);
+
+  if (score < lowestScore) {
+    lowestScore = score;
+  } else if (score > highestScore) {
+    highestScore = score;
+  }
+  totalScore += score;
+
+  document.getElementById("student-data").innerHTML += "<p>" + name + " - " + score + "</p>";
+}
+
+document.getElementById("student-data").innerHTML += "<p>Total students: " + students.length + "</p>";
+
+document.getElementById("student-data").innerHTML += "<p>Lowest score: " + lowestScore + "</p>";
+document.getElementById("student-data").innerHTML += "<p>Highest score: " + highestScore + "</p>";
+document.getElementById("student-data").innerHTML += "<p>Average score: " + (totalScore / students.length) + "</p>";
+</script>
+</body>
+</html>
 
